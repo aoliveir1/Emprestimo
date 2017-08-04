@@ -68,11 +68,11 @@ public class UsuarioFormBean implements Serializable {
 		this.init();
 	}
 
-	// Métodos chamados na página formCursos
+	// Métodos chamados na página formUsu�rios
 
 	public String inserir() {
 		usuarioSession.insere(usuario);
-		return "lista?faces-redirect=true";
+		return "ferramentas?faces-redirect=true";
 	}
 	
 	public String alterar() {

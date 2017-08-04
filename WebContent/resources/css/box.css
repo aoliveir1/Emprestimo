@@ -89,15 +89,18 @@ div.botao {
 }
 
 #botao-principal {
+	border-bottom: 6px solid #c0faff;
 	font-size: 20px;
 	color: #003399;
 	font-weight: bold;
 	background: none repeat scroll 0 0 #e0faff;
 	animation-name: efeito-botao-principal;
 	animation-duration: 3s;
-	outline: 4px solid #e0faff;
-	/* Move the outline 15px away from the border */
+	
+	/* Move the outline -4px away from the border */
 	outline-offset: -4px;
+	
+	
 }
 
 @keyframes efeito-botao-principal {

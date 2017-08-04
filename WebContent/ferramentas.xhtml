@@ -30,13 +30,13 @@
 		<h:form>
 			<p:poll listener="#{emprestimoListaBean.qtdEmprestados}"
 				interval="10000" update="txt_count" />
-			<p:panel id="panel">
+			<p:panel id="panel1">
 				<p:separator />
 				<h1>
 					<p:outputLabel value="Limpar Devolvidos" />
 				</h1>
 				<h3>
-					<p:outputLabel escape="true"
+					<p:outputLabel
 						value="Move os registros que já foram marcados como 'Devolvidos' do banco de dados para um arquivo no pc que está rodando o servidor." />
 				</h3>
 				<p:commandButton action="#{ferramentasBean.removerDevolvidos}"
@@ -52,7 +52,50 @@
 
 				<p:separator />
 
-				<p:blockUI block="panel" trigger="limpar">
+				<p:blockUI block="panel1" trigger="limpar">
+					<h:graphicImage library="images" name="ajax-loader.gif" />
+				</p:blockUI>
+			</p:panel>
+		</h:form>
+	</div>
+
+	<div class="ferramentas">
+		<h:form>
+			<p:poll listener="#{emprestimoListaBean.qtdEmprestados}"
+				interval="10000" update="txt_count" />
+			<p:panel id="panel2">
+				<p:separator />
+				<h1>
+					<p:outputLabel value="Adicionar Usuário" />
+				</h1>
+				<h3>
+					<p:outputLabel
+						value="Adiconar usuários ao controle para emprestar e receber de volta materiais emprestados." />
+				</h3>
+				<h:inputHidden value="#{usuarioFormBean.usuario.id}" />
+				<p:inputText id="nome" value="#{usuarioFormBean.usuario.nome}"
+					placeholder="Nome:" autocomplete="off" required="true"
+					style="text-align: center;" />
+				<br />
+				<br />
+				<p:commandButton action="#{usuarioFormBean.inserir}"
+					value="Adicionar" id="adicionar" />
+
+				<br />
+
+				<h4>
+					<p:outputLabel value="Usuários cadastrados: "
+						style="font-style: italic" />
+					<p:dataList value="#{usuarioListaBean.usuarios}" var="usuario"
+						type="ordered">
+						<p:outputLabel value="#{usuario.nome}" style="font-style: italic" />
+					</p:dataList>
+				</h4>
+
+
+				<p:separator />
+
+				<p:blockUI block="panel2" trigger="adicionar">
 					<h:graphicImage library="images" name="ajax-loader.gif" />
 				</p:blockUI>
 			</p:panel>
