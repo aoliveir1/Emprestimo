@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Controle de Empréstimos</title>
+	<h:outputStylesheet library="css" name="box.css" />
+	<link rel="shortcut icon" type="image/x-icon"
+		href="#{resource['ico/favicon.ico']}" />
+</h:head>
+<h:body>
+	<div class="devolve">
+		<h1>
+			<p:outputLabel value="Devolução" />
+		</h1>
+
+		<h:form id="devolveForm">
+
+			<h:inputHidden value="#{emprestimoFormBean.emprestimo.id}" />
+			<h:inputHidden value="#{emprestimoFormBean.emprestimo.nome}" />
+			<h:inputHidden value="#{emprestimoFormBean.emprestimo.material}" />
+			<h:inputHidden value="#{emprestimoFormBean.emprestimo.sala}" />
+			<h:inputHidden value="#{emprestimoFormBean.emprestimo.quemEmprestou}" />
+			<h:inputHidden
+				value="#{emprestimoFormBean.emprestimo.horaEmprestado}" />
+
+			<p:outputLabel value="#{emprestimoFormBean.emprestimo.material}" />
+			<p:outputLabel value=" em nome de " />
+			<p:outputLabel value="#{emprestimoFormBean.emprestimo.nome}" />
+			<p:outputLabel value="." />
+			<br />
+			<p:outputLabel value="Quem recebeu:" />
+			<p:selectOneMenu id="quemRecebeu"
+				value="#{emprestimoFormBean.emprestimo.quemRecebeu}"
+				autocomplete="off" required="true">
+				<f:selectItem itemValue="" itemLabel="" />
+				<f:selectItem itemValue="André" itemLabel="André" />
+				<f:selectItem itemValue="Brenda" itemLabel="Brenda" />
+				<f:selectItem itemValue="Guinter" itemLabel="Guinter" />
+				<f:selectItem itemValue="Jean" itemLabel="Jean" />
+				<f:selectItem itemValue="Marcio" itemLabel="Marcio" />
+			</p:selectOneMenu>
+			<br />
+			<p:commandButton id="btnOk" action="#{emprestimoFormBean.receber}"
+				value="Ok" />
+			<p:blockUI block="devolveForm" trigger="btnOk">
+				<h:graphicImage library="images" name="ajax-loader.gif" />
+			</p:blockUI>
+		</h:form>
+	</div>
+</h:body>
+</html>

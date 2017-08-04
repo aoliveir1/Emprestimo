@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Controle de Empréstimos</title>
+	<h:outputStylesheet library="css" name="box.css" />
+	<link rel="shortcut icon" type="image/x-icon"
+		href="#{resource['ico/favicon.ico']}" />
+</h:head>
+<h:body>
+	<div style="width: 100%">
+		<div class="botao" id="botao-principal">
+			<p:outputLabel value="Alterar"
+				rendered="#{not emprestimoFormBean.inclusao}" />
+			<p:outputLabel value="Novo" rendered="#{emprestimoFormBean.inclusao}" />
+		</div>
+		<div class="botao" id="botao-secundario">
+			<p:link id="txt_count"
+				value="Emprestados(#{emprestimoListaBean.qtdEmprestados})"
+				href="lista.xhtml" />
+		</div>
+		<div class="botao" id="botao-secundario">
+			<p:link value="Devolvidos" href="devolvidos.xhtml" />
+		</div>
+		<div class="botao" id="botao-secundario">
+			<p:link href="ferramentas.xhtml" value="Ferramentas" />
+		</div>
+	</div>
+	<div class="emprestimoForm">
+		<h:form id="emprestimoForm">
+			<p:poll listener="#{emprestimoListaBean.qtdEmprestados}"
+				interval="10000" update="txt_count" />
+			<center>
+
+				<p:outputLabel value="Informe os dados:"
+					style="font-weight:bold; color:#003399;" />
+				<h:inputHidden value="#{emprestimoFormBean.emprestimo.id}" />
+				<h:inputHidden
+					value="#{emprestimoFormBean.emprestimo.horaEmprestado}" />
+				<h:inputHidden value="#{emprestimoFormBean.emprestimo.emprestado}" />
+
+				<p:panelGrid id="panelGrid" columns="11">
+
+					<p:focus context="panelGrid" />
+
+					<p:outputLabel value="Nome:" />
+					<p:inputText id="nome"
+						value="#{emprestimoFormBean.emprestimo.nome}" autocomplete="off"
+						required="true" />
+
+					<p:outputLabel value="Material:" />
+					<p:selectOneMenu id="material"
+						value="#{emprestimoFormBean.emprestimo.material}"
+						autocomplete="off" required="true" effect="fade" filter="true"
+						filterMatchMode="contains" editable="true">
+						<f:selectItem itemLabel="" itemValue="" />
+						<f:selectItems value="#{materialListaBean.nomes}" />
+					</p:selectOneMenu>
+
+					<p:outputLabel value="Sala:" />
+					<p:inputText id="sala"
+						value="#{emprestimoFormBean.emprestimo.sala}" autocomplete="off"
+						required="true" size="4" />
+
+					<p:outputLabel value="Quem emprestou:" />
+					<p:selectOneMenu id="quemEmprestou"
+						value="#{emprestimoFormBean.emprestimo.quemEmprestou}"
+						autocomplete="off" required="true" effect="fade">
+						<f:selectItem itemLabel="" itemValue="" />
+						<f:selectItems value="#{usuarioListaBean.nomes}" />
+					</p:selectOneMenu>
+
+					<p:splitButton value="Inserir" id="btnInserir"
+						action="#{emprestimoFormBean.inserir}" icon="ui-icon-check"
+						disabled="#{not emprestimoFormBean.inclusao}">
+						<p:menuitem id="btnLimpar" action="#{emprestimoFormBean.limpar}"
+							value="Limpar" icon="ui-icon-arrowthick-1-w" immediate="true" />
+					</p:splitButton>
+
+					<p:splitButton value="Alterar" id="btnAlterar"
+						action="#{emprestimoFormBean.alterar}" icon="ui-icon-pencil">
+						<p:menuitem id="btnExcluir" action="#{emprestimoFormBean.excluir}"
+							value="Excluir" icon="ui-icon-trash" />
+					</p:splitButton>
+
+				</p:panelGrid>
+
+				<p:blockUI block="panelGrid" trigger="btnInserir">
+					<h:graphicImage library="images" name="ajax-loader.gif" />
+				</p:blockUI>
+				<p:blockUI block="panelGrid" trigger="btnAlterar">
+					<h:graphicImage library="images" name="ajax-loader.gif" />
+				</p:blockUI>
+
+			</center>
+		</h:form>
+	</div>
+</h:body>
+</html>

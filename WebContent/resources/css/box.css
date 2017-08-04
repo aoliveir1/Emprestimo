@@ -1,0 +1,129 @@
+body {
+	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+}
+
+h1 {
+	font-size: 22px;
+	color: #003399;
+}
+
+h2 {
+	font-size: 18px;
+	color: #003389;
+}
+
+h3 {
+	font-size: 14px;
+	color: #003379;
+}
+
+h4 {
+	font-size: 10px;
+	color: #003369;
+}
+
+.ui-state-default {
+	color: #003399;
+	background-color: #e0faff;
+	border-top: 4px solid transparent;
+	border-bottom: 2px solid;
+	border-left: 2px solid transparent;
+	border-right: 2px solid transparent;
+}
+
+.ui-column-title {
+	font-size: 16px;
+	font: bold;
+}
+
+table, .ui-panelgrid {
+	border-collapse: collapse;
+	font-size: 12px;
+	text-align: center;
+	border-bottom: 2px solid;
+}
+
+.ui-widget-content {
+	background-color: #e0faff;
+	border-bottom: 4px solid transparent;
+	border-top: 4px solid transparent;
+	border-left: 4px transparent;
+	border-right: 4px transparent;
+	color: #000053;
+	padding: 5px;
+}
+
+.ui-paginator-bottom {
+	background-color: #e0faff;
+	border: 0;
+}
+
+.ui-selectonemenu-label, .ui-inputfield, .ui-corner-all {
+	font-size: 12px;
+	background: white;
+}
+
+div.emprestimoLista, div.devolvidosLista, div.emprestimoForm, div.devolveForm,
+	div.devolve, div.ferramentas {
+	clear: both;
+	border-top: 4px solid #d0faff;
+	border-bottom: 2px solid #d0faff;
+	background: none repeat scroll 0 0 #e0faff;
+	text-align: center;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	padding-left: 150px;
+	padding-right: 150px;
+}
+
+div.botao {
+	width: 170px;
+	height: 20px;
+	float: left;
+	padding: 10px;
+	text-align: center;
+}
+
+#sublinhar {
+	text-decoration: underline;
+}
+
+#botao-principal {
+	font-size: 20px;
+	color: #003399;
+	font-weight: bold;
+	background: none repeat scroll 0 0 #e0faff;
+	animation-name: efeito-botao-principal;
+	animation-duration: 3s;
+	outline: 4px solid #e0faff;
+	/* Move the outline 15px away from the border */
+	outline-offset: -4px;
+}
+
+@keyframes efeito-botao-principal {
+	from {background-color: #c0faff;
+}
+to {
+	background-color: #e0faff;
+}
+}
+
+#botao-secundario {
+	font-size: 12px;
+	animation-name: efeito-botao-secundario;
+	animation-duration: 3s;
+}
+
+@keyframes efeito-botao-secundario {
+	from {background-color: #e0faff;
+}
+to {
+	background-color: #ffffff;
+}
+}
+
+a:link {
+	color: #003369;
+	text-decoration: none;
+	cursor: pointer;
+}

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Controle de Empréstimos</title>
+	<h:outputStylesheet library="css" name="box.css" />
+	<link rel="shortcut icon" type="image/x-icon"
+		href="#{resource['ico/favicon.ico']}" />
+</h:head>
+<h:body>
+	<div style="width: 100%">
+		<div class="botao" id="botao-secundario">
+			<p:link href="mantem.xhtml" value="Novo" />
+		</div>
+		<div class="botao" id="botao-secundario">
+			<p:link id="txt_count"
+				value="Emprestados(#{emprestimoListaBean.qtdEmprestados})"
+				href="lista.xhtml" />
+		</div>
+		<div class="botao" id="botao-secundario">
+			<p:link href="devolvidos.xhtml" value="Devolvidos" />
+		</div>
+		<div class="botao" id="botao-principal">
+			<h:outputLabel value="Ferramentas" />
+		</div>
+	</div>
+	<div class="ferramentas">
+		<h:form>
+			<p:poll listener="#{emprestimoListaBean.qtdEmprestados}"
+				interval="10000" update="txt_count" />
+			<p:panel id="panel">
+				<p:separator />
+				<h1>
+					<p:outputLabel value="Limpar Devolvidos" />
+				</h1>
+				<h3>
+					<p:outputLabel escape="true"
+						value="Move os registros que já foram marcados como 'Devolvidos' do banco de dados para um arquivo no pc que está rodando o servidor." />
+				</h3>
+				<p:commandButton action="#{ferramentasBean.removerDevolvidos}"
+					value="Limpar devolvidos" id="limpar" />
+
+				<br />
+
+				<h4>
+					<p:outputLabel
+						value="'C:/Users/suptilocal/Documents/Emprestimos/nomeAnoMêsDiaHoraMinSeg.csv'"
+						style="font-style: italic" />
+				</h4>
+
+				<p:separator />
+
+				<p:blockUI block="panel" trigger="limpar">
+					<h:graphicImage library="images" name="ajax-loader.gif" />
+				</p:blockUI>
+			</p:panel>
+		</h:form>
+	</div>
+</h:body>
+</html>

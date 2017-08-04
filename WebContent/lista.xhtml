@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Controle de Empréstimos</title>
+	<h:outputStylesheet library="css" name="box.css" />
+	<link rel="shortcut icon" type="image/x-icon"
+		href="#{resource['ico/favicon.ico']}" />
+</h:head>
+<body>
+	<div style="width: 100%">
+		<div class="botao" id="botao-secundario">
+			<p:link value="Novo" href="mantem.xhtml" />
+		</div>
+		<div class="botao" id="botao-principal">
+			<h:outputLabel id="txt_count"
+				value="Emprestados(#{emprestimoListaBean.qtdEmprestados})" />
+		</div>
+		<div class="botao" id="botao-secundario">
+			<p:link href="devolvidos.xhtml" value="Devolvidos" />
+		</div>
+		<div class="botao" id="botao-secundario">
+			<p:link href="ferramentas.xhtml" value="Ferramentas" />
+		</div>
+	</div>
+	<div class="emprestimoLista">
+		<h:form id="emprestimoForm" prependId="false">
+			<p:poll listener="#{emprestimoListaBean.qtdEmprestados}"
+				interval="10000" update="txt_count" />
+
+			<p:dataTable id="table-lista" rowHover="true"
+				value="${emprestimoListaBean.emprestadosEmprestimos}"
+				var="emprestimo" rows="18" paginator="true"
+				paginatorAlwaysVisible="false" paginatorPosition="bottom">
+
+				<p:column width="10%" headerText="Devolver/Editar">
+					<h:commandLink action="devolve"
+						actionListener="#{emprestimoFormBean.buscaEmprestimo}">
+						<h:graphicImage library="images" name="database-devolve-icon.png"
+							title="Devolver" />
+						<f:param name="id" value="#{emprestimo.id}" />
+					</h:commandLink>
+
+					<h:commandLink action="mantem"
+						actionListener="#{emprestimoFormBean.buscaEmprestimo}">
+						<h:graphicImage library="images" name="database-edit-icon.png"
+							title="Editar" style="padding-left:15px" />
+						<f:param name="id" value="#{emprestimo.id}" />
+					</h:commandLink>
+
+				</p:column>
+				<p:column headerText="Nome">
+					<p:outputLabel value="#{emprestimo.nome}" />
+				</p:column>
+
+				<p:column headerText="Material">
+					<p:outputLabel value="#{emprestimo.material}" />
+				</p:column>
+				<p:column width="5%" headerText="Sala">
+					<p:outputLabel value="#{emprestimo.sala}" />
+				</p:column>
+				<p:column headerText="Quem emprestou">
+					<p:outputLabel value="#{emprestimo.quemEmprestou}" />
+				</p:column>
+				<p:column headerText="Hora da retirada">
+					<p:outputLabel value="#{emprestimo.horaEmprestado}" />
+				</p:column>
+
+
+			</p:dataTable>
+
+
+		</h:form>
+	</div>
+</body>
+</html>

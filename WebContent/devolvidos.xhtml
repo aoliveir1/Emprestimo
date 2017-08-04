@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Controle de Empréstimos</title>
+	<h:outputStylesheet library="css" name="box.css" />
+	<link rel="shortcut icon" type="image/x-icon"
+		href="#{resource['ico/favicon.ico']}" />
+</h:head>
+<h:body>
+	<div style="width: 100%">
+		<div class="botao" id="botao-secundario">
+			<p:link value="Novo" href="mantem.xhtml" />
+		</div>
+		<div class="botao" id="botao-secundario">
+			<p:link value="Emprestados(#{emprestimoListaBean.qtdEmprestados})"
+				href="lista.xhtml" />
+		</div>
+		<div class="botao" id="botao-principal">
+			<p:outputLabel value="Devolvidos" />
+		</div>
+		<div class="botao" id="botao-secundario">
+			<p:link href="ferramentas.xhtml" value="Ferramentas" />
+		</div>
+	</div>
+	<div class="devolvidosLista">
+		<h:form id="devolvidosForm" prependId="false">
+			<p:dataTable value="${emprestimoListaBean.devolvidosEmprestimos}"
+				rowHover="true" var="devolvido" rows="20" paginator="true"
+				paginatorAlwaysVisible="false" paginatorPosition="bottom">
+				<p:column headerText="Nome">
+					<h:outputText value="#{devolvido.nome}" />
+				</p:column>
+				<p:column headerText="Material">
+					<h:outputText value="#{devolvido.material}" />
+				</p:column>
+				<p:column headerText="Sala" width="100">
+					<h:outputText value="#{devolvido.sala}" />
+				</p:column>
+				<p:column headerText="Quem emprestou">
+					<h:outputText value="#{devolvido.quemEmprestou}" />
+				</p:column>
+				<p:column headerText="Data do empréstimo">
+					<h:outputText value="#{devolvido.horaEmprestado}" />
+				</p:column>
+				<p:column headerText="Quem recebeu">
+					<h:outputText value="#{devolvido.quemRecebeu}" />
+				</p:column>
+				<p:column headerText="Data da devolução">
+					<h:outputText value="#{devolvido.horaDevolucao}" />
+				</p:column>					
+			</p:dataTable>
+		</h:form>
+	</div>
+</h:body>
+</html>
