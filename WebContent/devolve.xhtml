@@ -33,14 +33,12 @@
 			<p:outputLabel value="Quem recebeu:" />
 			<p:selectOneMenu id="quemRecebeu"
 				value="#{emprestimoFormBean.emprestimo.quemRecebeu}"
-				autocomplete="off" required="true">
-				<f:selectItem itemValue="" itemLabel="" />
-				<f:selectItem itemValue="André" itemLabel="André" />
-				<f:selectItem itemValue="Brenda" itemLabel="Brenda" />
-				<f:selectItem itemValue="Guinter" itemLabel="Guinter" />
-				<f:selectItem itemValue="Jean" itemLabel="Jean" />
-				<f:selectItem itemValue="Marcio" itemLabel="Marcio" />
+				autocomplete="off" required="true" effect="fade">
+				<f:selectItem itemLabel="" itemValue="" />
+				<f:selectItems value="#{usuarioListaBean.nomes}" />
 			</p:selectOneMenu>
+
+			<br />
 			<br />
 			<p:commandButton id="btnOk" action="#{emprestimoFormBean.receber}"
 				value="Ok" />

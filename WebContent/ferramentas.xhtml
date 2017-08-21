@@ -8,6 +8,7 @@
 	<h:outputStylesheet library="css" name="box.css" />
 	<link rel="shortcut icon" type="image/x-icon"
 		href="#{resource['ico/favicon.ico']}" />
+	<h:outputScript library="js" name="js.js" />
 </h:head>
 <h:body>
 	<div style="width: 100%">
@@ -26,80 +27,91 @@
 			<h:outputLabel value="Ferramentas" />
 		</div>
 	</div>
-	<div class="ferramentas">
-		<h:form>
-			<p:poll listener="#{emprestimoListaBean.qtdEmprestados}"
-				interval="10000" update="txt_count" />
-			<p:panel id="panel1">
-				<p:separator />
-				<h1>
-					<p:outputLabel value="Limpar Devolvidos" />
-				</h1>
-				<h3>
-					<p:outputLabel
-						value="Move os registros que já foram marcados como 'Devolvidos' do banco de dados para um arquivo no pc que está rodando o servidor." />
-				</h3>
-				<p:commandButton action="#{ferramentasBean.removerDevolvidos}"
-					value="Limpar devolvidos" id="limpar" />
-
-				<br />
-
-				<h4>
-					<p:outputLabel
-						value="'C:/Users/suptilocal/Documents/Emprestimos/nomeAnoMêsDiaHoraMinSeg.csv'"
-						style="font-style: italic" />
-				</h4>
-
-				<p:separator />
-
-				<p:blockUI block="panel1" trigger="limpar">
-					<h:graphicImage library="images" name="ajax-loader.gif" />
-				</p:blockUI>
-			</p:panel>
-		</h:form>
-	</div>
 
 	<div class="ferramentas">
-		<h:form>
-			<p:poll listener="#{emprestimoListaBean.qtdEmprestados}"
-				interval="10000" update="txt_count" />
-			<p:panel id="panel2">
-				<p:separator />
-				<h1>
-					<p:outputLabel value="Adicionar Usuário" />
-				</h1>
-				<h3>
-					<p:outputLabel
-						value="Adiconar usuários ao controle para emprestar e receber de volta materiais emprestados." />
-				</h3>
-				<h:inputHidden value="#{usuarioFormBean.usuario.id}" />
-				<p:inputText id="nome" value="#{usuarioFormBean.usuario.nome}"
-					placeholder="Nome:" autocomplete="off" required="true"
-					style="text-align: center;" />
-				<br />
-				<br />
-				<p:commandButton action="#{usuarioFormBean.inserir}"
-					value="Adicionar" id="adicionar" />
 
-				<br />
+		<p:link href="#" id="limpar" value="Devolvidos" />
+		<p:spacer width="20" height="20" />
+		<p:outputLabel value="-" />
+		<p:spacer width="20" height="20" />
+		<p:link href="#" id="usuario" value="Usuários" />
 
-				<h4>
-					<p:outputLabel value="Usuários cadastrados: "
-						style="font-style: italic" />
-					<p:dataList value="#{usuarioListaBean.usuarios}" var="usuario"
-						type="ordered">
-						<p:outputLabel value="#{usuario.nome}" style="font-style: italic" />
-					</p:dataList>
-				</h4>
+		<div class="ferramentas-limpar">
+			<br />
+			<h:form>
+				<p:poll listener="#{emprestimoListaBean.qtdEmprestados}"
+					interval="10000" update="txt_count" />
+				<p:panel id="panel1">
+					<h1>
+						<p:outputLabel value="Limpar Devolvidos" />
+					</h1>
+					<h3>
+						<p:outputLabel
+							value="Move os registros que já foram marcados como 'Devolvidos' do banco de dados para um arquivo no pc que está rodando o servidor." />
+					</h3>
+					<p:commandButton action="#{ferramentasBean.removerDevolvidos}"
+						value="Limpar devolvidos" id="limpar" />
+					<br />
+					<h4>
+						<p:outputLabel
+							value="'C:/Users/suptilocal/Documents/Emprestimos/nomeAnoMêsDiaHoraMinSeg.csv'"
+							style="font-style: italic" />
+					</h4>
+					<p:blockUI block="panel1" trigger="limpar">
+						<h:graphicImage library="images" name="ajax-loader.gif" />
+					</p:blockUI>
+				</p:panel>
+			</h:form>
+		</div>
+		<div class="ferramentas-usuario">
+			<br /> 
+			<div>
+				<h:form>
+					<p:poll listener="#{emprestimoListaBean.qtdEmprestados}"
+						interval="10000" update="txt_count" />
+					<p:panel id="panel2">
 
+						<h1>
+							<p:outputLabel value="Adicionar Usuário" />
+						</h1>
+						<h3>
+							<p:outputLabel
+								value="Adiconar usuários ao controle para emprestar e receber de volta materiais emprestados." />
+						</h3>
+						<h:inputHidden value="#{usuarioFormBean.usuario.id}" />
+						<p:inputText id="nome" value="#{usuarioFormBean.usuario.nome}"
+							placeholder="Nome:" autocomplete="off" required="true"
+							style="text-align: center;" />
+						<br />
+						<br />
+						<p:commandButton action="#{usuarioFormBean.inserir}"
+							value="Adicionar" id="adicionar" update="panel3" />
 
-				<p:separator />
-
-				<p:blockUI block="panel2" trigger="adicionar">
-					<h:graphicImage library="images" name="ajax-loader.gif" />
-				</p:blockUI>
-			</p:panel>
-		</h:form>
+						<br />
+					</p:panel>
+					<p:blockUI block="panel2" trigger="adicionar">
+						<h:graphicImage library="images" name="ajax-loader.gif" />
+					</p:blockUI>
+				</h:form>
+			</div>
+			<div>
+				<h:form id="panel3">
+					<h4>
+						<p:outputLabel value="Usuários cadastrados:"
+							style="font-style: italic" />
+						<p:dataList value="#{usuarioListaBean.usuarios}" var="usuario" >
+							<p:outputLabel value="#{usuario.nome}" style="font-style: italic" />
+							<p:spacer width="10" height="10" />
+							<p:commandLink action="remove_usuario"
+								actionListener="#{usuarioFormBean.buscaUsuario}" title="Excluir">
+						x
+						<f:param name="id" value="#{usuario.id}" />
+							</p:commandLink>
+						</p:dataList>
+					</h4>
+				</h:form>
+			</div>
+		</div>
 	</div>
 </h:body>
 </html>

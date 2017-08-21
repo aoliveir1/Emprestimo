@@ -72,7 +72,7 @@ public class UsuarioFormBean implements Serializable {
 
 	public String inserir() {
 		usuarioSession.insere(usuario);
-		return "ferramentas?faces-redirect=true";
+		return "";
 	}
 	
 	public String alterar() {
@@ -82,9 +82,9 @@ public class UsuarioFormBean implements Serializable {
 	
 	public String excluir() {
 		usuarioSession.remove(usuario);
-		return "lista?faces-redirect=true";
+		return "ferramentas?faces-redirect=true";
 	}
-
+	
 	public String limpar() {
 		init();
 		return "mantem?faces-redirect=true";

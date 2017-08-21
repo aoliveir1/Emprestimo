@@ -64,7 +64,7 @@ table, .ui-panelgrid {
 }
 
 div.emprestimoLista, div.devolvidosLista, div.emprestimoForm, div.devolveForm,
-	div.devolve, div.ferramentas {
+	div.devolve, div.ferramentas, div.remove {
 	clear: both;
 	border-top: 4px solid #d0faff;
 	border-bottom: 2px solid #d0faff;
@@ -74,6 +74,11 @@ div.emprestimoLista, div.devolvidosLista, div.emprestimoForm, div.devolveForm,
 	padding-bottom: 20px;
 	padding-left: 150px;
 	padding-right: 150px;
+}
+
+div.ferramentas-limpar, div.ferramentas-usuario {
+	clear: both;
+	display: none;
 }
 
 div.botao {
@@ -96,35 +101,36 @@ div.botao {
 	background: none repeat scroll 0 0 #e0faff;
 	animation-name: efeito-botao-principal;
 	animation-duration: 3s;
-	
 	/* Move the outline -4px away from the border */
 	outline-offset: -4px;
-	
-	
 }
 
-@keyframes efeito-botao-principal {
+@
+keyframes efeito-botao-principal {
 	from {background-color: #c0faff;
 }
+
 to {
 	background-color: #e0faff;
 }
-}
 
+}
 #botao-secundario {
 	font-size: 12px;
 	animation-name: efeito-botao-secundario;
 	animation-duration: 3s;
 }
 
-@keyframes efeito-botao-secundario {
+@
+keyframes efeito-botao-secundario {
 	from {background-color: #e0faff;
 }
+
 to {
 	background-color: #ffffff;
 }
-}
 
+}
 a:link {
 	color: #003369;
 	text-decoration: none;
