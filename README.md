@@ -1,1 +1,5 @@
-Controle de empréstimos utilizado no setor onde trabalho.
+Recursos:
+-EJB 3.2
+-JSF 2.2
+-Wildfly 10
+-Primefaces 6
