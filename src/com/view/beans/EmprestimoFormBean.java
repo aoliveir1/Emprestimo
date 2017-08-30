@@ -1,6 +1,5 @@
 package com.view.beans;
 
-import java.io.File;
 import java.io.Serializable;
 
 import javax.annotation.PostConstruct;
