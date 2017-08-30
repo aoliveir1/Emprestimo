@@ -16,7 +16,7 @@ import javax.persistence.Table;
 @Table(name = "Material")
 @SequenceGenerator(name = "Material_Sequence", sequenceName = "material_seq", allocationSize = 0, initialValue = 1)
 @NamedQueries({	
-	@NamedQuery(name = "busca.todos.materiais", query = "select m from Material as m"),
+	@NamedQuery(name = "busca.todos.materiais", query = "select m from Material as m order by m.material"),
 	@NamedQuery(name = "busca.nomes.materiais", query = "select m.material from Material as m order by m.material")
 	})
 public class Material implements Serializable{

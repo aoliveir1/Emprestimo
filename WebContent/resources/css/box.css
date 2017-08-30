@@ -76,7 +76,7 @@ div.emprestimoLista, div.devolvidosLista, div.emprestimoForm, div.devolveForm,
 	padding-right: 150px;
 }
 
-div.ferramentas-limpar, div.ferramentas-usuario {
+div.ferramentas-limpar, div.ferramentas-usuario, div.ferramentas-material {
 	clear: both;
 	display: none;
 }
@@ -105,8 +105,7 @@ div.botao {
 	outline-offset: -4px;
 }
 
-@
-keyframes efeito-botao-principal {
+@keyframes efeito-botao-principal {
 	from {background-color: #c0faff;
 }
 
@@ -121,8 +120,7 @@ to {
 	animation-duration: 3s;
 }
 
-@
-keyframes efeito-botao-secundario {
+@keyframes efeito-botao-secundario {
 	from {background-color: #e0faff;
 }
 

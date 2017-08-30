@@ -31,10 +31,10 @@
 	<div class="ferramentas">
 
 		<p:link href="#" id="limpar" value="Devolvidos" />
-		<p:spacer width="20" height="20" />
-		<p:outputLabel value="-" />
-		<p:spacer width="20" height="20" />
+		<p:spacer width="40" height="20" />
 		<p:link href="#" id="usuario" value="Usuários" />
+		<p:spacer width="40" height="20" />
+		<p:link href="#" id="material" value="Materiais" />
 
 		<div class="ferramentas-limpar">
 			<br />
@@ -62,9 +62,9 @@
 			</h:form>
 		</div>
 		<div class="ferramentas-usuario">
-			<br /> 
+			<br />
 			<div>
-				<h:form>
+				<h:form id="formusuarios">
 					<p:panel id="panel2">
 
 						<h1>
@@ -72,20 +72,20 @@
 						</h1>
 						<h3>
 							<p:outputLabel
-								value="Adiconar usuários ao controle para emprestar e receber de volta materiais emprestados." />
+								value="Adiconar usuários ao banco de dados do controle." />
 						</h3>
 						<h:inputHidden value="#{usuarioFormBean.usuario.id}" />
-						<p:inputText id="nome" value="#{usuarioFormBean.usuario.nome}"
+						<p:inputText value="#{usuarioFormBean.usuario.nome}"
 							placeholder="Nome:" autocomplete="off" required="true"
 							style="text-align: center;" />
 						<br />
 						<br />
-						<p:commandButton action="#{usuarioFormBean.inserir}"
-							value="Adicionar" id="adicionar" update="panel3" />
-
+						<p:commandButton id="addusuario"
+							action="#{usuarioFormBean.inserir}" value="Adicionar"
+							update="panel3" onsuccess="$('#formusuarios').trigger('reset');" />
 						<br />
 					</p:panel>
-					<p:blockUI block="panel2" trigger="adicionar">
+					<p:blockUI block="panel2" trigger="addusuario">
 						<h:graphicImage library="images" name="ajax-loader.gif" />
 					</p:blockUI>
 				</h:form>
@@ -95,13 +95,64 @@
 					<h4>
 						<p:outputLabel value="Usuários cadastrados:"
 							style="font-style: italic" />
-						<p:dataList value="#{usuarioListaBean.usuarios}" var="usuario" >
+						<p:dataList value="#{usuarioListaBean.usuarios}" var="usuario">
 							<p:outputLabel value="#{usuario.nome}" style="font-style: italic" />
 							<p:spacer width="10" height="10" />
 							<p:commandLink action="remove_usuario"
 								actionListener="#{usuarioFormBean.buscaUsuario}" title="Excluir">
 						x
 						<f:param name="id" value="#{usuario.id}" />
+							</p:commandLink>
+						</p:dataList>
+					</h4>
+				</h:form>
+			</div>
+		</div>
+		<div class="ferramentas-material">
+			<br />
+			<div>
+				<h:form id="formmateriais">
+					<p:panel id="panel4">
+
+						<h1>
+							<p:outputLabel value="Adicionar Material" />
+						</h1>
+						<h3>
+							<p:outputLabel
+								value="Adiconar materiais ao banco de dados do controle." />
+						</h3>
+						<h:inputHidden value="#{materialFormBean.material.id}" />
+						<p:inputText id="material"
+							value="#{materialFormBean.material.material}"
+							placeholder="Material:" autocomplete="off" required="true"
+							style="text-align: center;" />
+						<br />
+						<br />
+						<p:commandButton id="addmaterial"
+							action="#{materialFormBean.inserir}" value="Adicionar"
+							update="panel5" onsuccess="$('#formmateriais').trigger('reset');" />
+
+						<br />
+					</p:panel>
+					<p:blockUI block="panel4" trigger="addmaterial">
+						<h:graphicImage library="images" name="ajax-loader.gif" />
+					</p:blockUI>
+				</h:form>
+			</div>
+			<div>
+				<h:form id="panel5">
+					<h4>
+						<p:outputLabel value="Materiais cadastrados:"
+							style="font-style: italic" />
+						<p:dataList value="#{materialListaBean.materiais}" var="material">
+							<p:outputLabel value="#{material.material}"
+								style="font-style: italic" />
+							<p:spacer width="10" height="10" />
+							<p:commandLink action="remove_material"
+								actionListener="#{materialFormBean.buscaMaterial}"
+								title="Excluir">
+						x
+						<f:param name="id" value="#{material.id}" />
 							</p:commandLink>
 						</p:dataList>
 					</h4>

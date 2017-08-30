@@ -15,7 +15,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "Usuario")
 @SequenceGenerator(name = "Usuario_Sequence", sequenceName = "usuario_seq", allocationSize = 0, initialValue = 1)
-@NamedQueries({	@NamedQuery(name = "busca.todos.usuarios", query = "select u from Usuario as u"),
+@NamedQueries({	@NamedQuery(name = "busca.todos.usuarios", query = "select u from Usuario as u order by u.nome"),
 	@NamedQuery(name = "busca.nomes.usuarios", query = "select u.nome from Usuario as u order by u.nome")})
 public class Usuario implements Serializable, Comparable<Usuario> {
 
