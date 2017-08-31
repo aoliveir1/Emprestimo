@@ -1,1 +1,1 @@
-Recursos: EJB, JPA, JSF, Servlet, JAX, Wildfly 10, Primefaces 6
+Recursos: EJB, JPA, JSF, Servlet, JAX, Wildfly 10, Primefaces 6, HTML, CSS, JavaScript.
