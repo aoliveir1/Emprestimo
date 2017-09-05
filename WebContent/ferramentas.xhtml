@@ -75,6 +75,7 @@
 								value="Adiconar usuários ao banco de dados do controle." />
 						</h3>
 						<h:inputHidden value="#{usuarioFormBean.usuario.id}" />
+						<h:inputHidden value="#{usuarioFormBean.usuario.login}" />
 						<p:inputText value="#{usuarioFormBean.usuario.nome}"
 							placeholder="Nome:" autocomplete="off" required="true"
 							style="text-align: center;" />
@@ -122,6 +123,7 @@
 								value="Adiconar materiais ao banco de dados do controle." />
 						</h3>
 						<h:inputHidden value="#{materialFormBean.material.id}" />
+						<h:inputHidden value="#{materialFormBean.material.tipo}" />
 						<p:inputText id="material"
 							value="#{materialFormBean.material.material}"
 							placeholder="Material:" autocomplete="off" required="true"

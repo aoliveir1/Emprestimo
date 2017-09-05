@@ -32,10 +32,10 @@
 
 			<p:dataTable id="table-lista" rowHover="true"
 				value="${emprestimoListaBean.emprestadosEmprestimos}"
-				var="emprestimo" rows="18" paginator="true"
+				var="emprestimo" rows="17" paginator="true"
 				paginatorAlwaysVisible="false" paginatorPosition="bottom">
 
-				<p:column width="10%" headerText="Devolver/Editar">
+				<p:column width="11%" headerText="Devolver/Editar">
 					<h:commandLink action="devolve"
 						actionListener="#{emprestimoFormBean.buscaEmprestimo}">
 						<h:graphicImage library="images" name="database-devolve-icon.png"

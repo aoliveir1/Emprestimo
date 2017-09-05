@@ -66,7 +66,7 @@ public class Material implements Serializable{
 		return tipo;
 	}
 
-	public void setNome(String tipo) {
+	public void setTipo(String tipo) {
 		this.tipo = tipo;
 	}
 
